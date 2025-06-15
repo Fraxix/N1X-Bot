@@ -17,8 +17,8 @@ class General(commands.Cog):
         
     @commands.command()
     async def status(self, ctx):
-        website_url = os.getenv('DISCORD_WEBHOOK')
-        webhook_url = os.getenv('WEBSITE')
+        website_url = os.getenv('WEBSITE')
+        webhook_url = os.getenv('DISCORD_WEBHOOK')
 
         website_status = check_online(website_url)
         webhook_status = check_online(webhook_url)

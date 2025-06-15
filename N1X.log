@@ -411,3 +411,177 @@ discord.ext.commands.errors.CommandInvokeError: Command raised an exception: Typ
 [2025-06-15 18:14:34,801] [INFO] [logging in using static token]
 [2025-06-15 18:14:36,131] [INFO] [Shard ID None has connected to Gateway (Session ID: f98ef77e552a5210d5e6b57ffbe40a72).]
 [2025-06-15 18:14:38,146] [INFO] [Logged in as N1X]
+[2025-06-15 19:42:32,194] [INFO] [logging in using static token]
+[2025-06-15 19:42:34,716] [INFO] [Shard ID None has connected to Gateway (Session ID: 7c46b8095d93c5eebc9d48abe433c911).]
+[2025-06-15 19:42:36,728] [INFO] [Logged in as N1X]
+[2025-06-15 19:42:40,802] [ERROR] [Ignoring exception in command ban]
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 845, in _parse_arguments
+    transformed = await self.transform(ctx, param, attachments)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 715, in transform
+    return await run_converters(ctx, converter, argument, param)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 1444, in run_converters
+    return await _actual_conversion(ctx, converter, argument, param)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 1326, in _actual_conversion
+    return await converter().convert(ctx, argument)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 281, in convert
+    raise MemberNotFound(argument)
+discord.ext.commands.errors.MemberNotFound: Member "Test" not found.
+[2025-06-15 19:42:56,038] [WARNING] [rayshiba tried to ban rayshiba but lacked permissions.]
+[2025-06-15 19:43:12,805] [ERROR] [Ignoring exception in command ban]
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 845, in _parse_arguments
+    transformed = await self.transform(ctx, param, attachments)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 715, in transform
+    return await run_converters(ctx, converter, argument, param)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 1444, in run_converters
+    return await _actual_conversion(ctx, converter, argument, param)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 1326, in _actual_conversion
+    return await converter().convert(ctx, argument)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 281, in convert
+    raise MemberNotFound(argument)
+discord.ext.commands.errors.MemberNotFound: Member "lofya" not found.
+[2025-06-15 19:43:25,632] [INFO] [rayshiba banned bot1325177561550032917#3501 | Reason: None]
+[2025-06-15 19:43:44,043] [ERROR] [Ignoring exception in command unban]
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Ray\Desktop\N1X Bot\Commands\moderation.py", line 27, in unban
+    banned_users = await ctx.guild.bans()
+                   ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object async_generator can't be used in 'await' expression
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: TypeError: object async_generator can't be used in 'await' expression
+[2025-06-15 19:44:03,693] [INFO] [logging in using static token]
+[2025-06-15 19:44:04,777] [INFO] [Shard ID None has connected to Gateway (Session ID: 08c2ae8be42c9cb792f619a7c00c9a14).]
+[2025-06-15 19:44:06,790] [INFO] [Logged in as N1X]
+[2025-06-15 19:44:09,245] [ERROR] [Ignoring exception in command unban]
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Ray\Desktop\N1X Bot\Commands\moderation.py", line 27, in unban
+    banned_users = await ctx.guild.bans()
+                   ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object async_generator can't be used in 'await' expression
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: TypeError: object async_generator can't be used in 'await' expression
+[2025-06-15 19:44:14,858] [ERROR] [Ignoring exception in command unban]
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Ray\Desktop\N1X Bot\Commands\moderation.py", line 27, in unban
+    banned_users = await ctx.guild.bans()
+                   ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object async_generator can't be used in 'await' expression
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: TypeError: object async_generator can't be used in 'await' expression
+[2025-06-15 19:45:16,377] [INFO] [logging in using static token]
+[2025-06-15 19:45:17,686] [INFO] [Shard ID None has connected to Gateway (Session ID: 66c04524205855718f7a51dfb6682f37).]
+[2025-06-15 19:45:19,688] [INFO] [Logged in as N1X]
+[2025-06-15 19:45:21,113] [ERROR] [Ignoring exception in command unban]
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Ray\Desktop\N1X Bot\Commands\moderation.py", line 28, in unban
+    name, discriminator = user_tag.split('#')
+    ^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: ValueError: not enough values to unpack (expected 2, got 1)
+[2025-06-15 19:46:29,006] [INFO] [logging in using static token]
+[2025-06-15 19:46:30,327] [INFO] [Shard ID None has connected to Gateway (Session ID: 2f00308c64dbe71f7a0bd22a0bc5bf53).]
+[2025-06-15 19:46:32,332] [INFO] [Logged in as N1X]
+[2025-06-15 19:46:35,515] [ERROR] [Ignoring exception in command unban]
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 1335, in _actual_conversion
+    return converter(argument)
+ValueError: invalid literal for int() with base 10: 'bot1325177561550032917'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 845, in _parse_arguments
+    transformed = await self.transform(ctx, param, attachments)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\core.py", line 715, in transform
+    return await run_converters(ctx, converter, argument, param)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 1444, in run_converters
+    return await _actual_conversion(ctx, converter, argument, param)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ray\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\ext\commands\converter.py", line 1344, in _actual_conversion
+    raise BadArgument(f'Converting to "{name}" failed for parameter "{param.name}".') from exc
+discord.ext.commands.errors.BadArgument: Converting to "int" failed for parameter "user_id".
+[2025-06-15 19:46:51,270] [ERROR] [Ignoring exception in command None]
+discord.ext.commands.errors.CommandNotFound: Command ">unban" is not found
+[2025-06-15 19:48:55,756] [INFO] [logging in using static token]
