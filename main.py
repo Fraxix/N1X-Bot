@@ -30,5 +30,6 @@ async def setup_hook():
     await bot.load_extension("Commands.general")
     await bot.load_extension("Commands.moderation")
     await bot.load_extension("Commands.misc")
+    await bot.load_extension("Commands.fun")
 
 bot.run(TOKEN)
