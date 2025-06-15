@@ -24,7 +24,7 @@ async def on_disconnect():
 @bot.event
 async def on_resumed():
     log.info("Bot resumed a session.")
-
+    
 @bot.event
 async def setup_hook():
     await bot.load_extension("Commands.general")
