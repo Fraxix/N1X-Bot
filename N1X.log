@@ -409,3 +409,5 @@ discord.ext.commands.errors.CommandInvokeError: Command raised an exception: Typ
 [2025-06-15 18:13:25,117] [INFO] [Shard ID None has connected to Gateway (Session ID: a6c873b52681ac3ab5316c45f6c39bfe).]
 [2025-06-15 18:13:27,137] [INFO] [Logged in as N1X]
 [2025-06-15 18:14:34,801] [INFO] [logging in using static token]
+[2025-06-15 18:14:36,131] [INFO] [Shard ID None has connected to Gateway (Session ID: f98ef77e552a5210d5e6b57ffbe40a72).]
+[2025-06-15 18:14:38,146] [INFO] [Logged in as N1X]
