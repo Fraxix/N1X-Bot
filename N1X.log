@@ -585,3 +585,5 @@ discord.ext.commands.errors.BadArgument: Converting to "int" failed for paramete
 [2025-06-15 19:46:51,270] [ERROR] [Ignoring exception in command None]
 discord.ext.commands.errors.CommandNotFound: Command ">unban" is not found
 [2025-06-15 19:48:55,756] [INFO] [logging in using static token]
+[2025-06-15 19:48:57,295] [INFO] [Shard ID None has connected to Gateway (Session ID: fe443f5a43456c199cebd7dc50604a3e).]
+[2025-06-15 19:48:59,299] [INFO] [Logged in as N1X]
