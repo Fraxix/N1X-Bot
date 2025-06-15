@@ -6,11 +6,10 @@ from Logger.logger import setup_logger
 
 load_dotenv(dotenv_path="Dev/.env")
 TOKEN = os.getenv('TOKEN')
-
-
 log = setup_logger()
 
 intents = discord.Intents.all()
+intents.members = True
 bot = commands.Bot(command_prefix='>', intents=intents)
 
 @bot.event
