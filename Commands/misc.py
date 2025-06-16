@@ -37,6 +37,22 @@ class Misc(commands.Cog):
 
         except requests.RequestException:
             await ctx.send("Error fetching dog image. Try again later.")
+            
+    @commands.command()
+    async def samoyed(self,ctx):
+        url = "https://dog.ceo/api/breed/samoyed/images/random"
+        try:
+            response = requests.get(url, timeout=5)
+            data = response.json()
+            if data["status"] == "success":
+                embed = discord.Embed(title="🐕❄️ Samoyed")
+                embed.set_image(url=data["message"])
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("Failed to get a dog image!")
+
+        except requests.RequestException:
+            await ctx.send("Error fetching dog image. Try again later.")
     
     @commands.command()
     async def avatar(self, ctx, member: discord.Member = None):
