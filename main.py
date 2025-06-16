@@ -34,5 +34,5 @@ async def setup_hook():
                 await bot.load_extension(category_name)
                 log.info(f'Successfully loaded extension: {category_name}')
             except Exception as e:
-                log.error(f'Failed to load extension {category_name}: {e}')
+                log.error(f'Failed to load extension: {category_name}: {e}')
 bot.run(TOKEN)
