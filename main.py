@@ -27,9 +27,12 @@ async def on_resumed():
     
 @bot.event
 async def setup_hook():
-    await bot.load_extension("Commands.general")
-    await bot.load_extension("Commands.moderation")
-    await bot.load_extension("Commands.misc")
-    await bot.load_extension("Commands.fun")
-
+    for filename in os.listdir('./Commands'):
+        if filename.endswith('.py'):
+            category_name = f'Commands.{filename[:-3]}'
+            try:
+                await bot.load_extension(category_name)
+                log.info(f'Successfully loaded extension: {category_name}')
+            except Exception as e:
+                log.error(f'Failed to load extension {category_name}: {e}')
 bot.run(TOKEN)
