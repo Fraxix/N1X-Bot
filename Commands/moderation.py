@@ -44,9 +44,10 @@ class Moderation(commands.Cog):
             if amount < 1:
                 await ctx.send("Please select atleast 1 message")
                 return 
-            deleted = await ctx.channel.purge(limit=amount + 1)
-            await ctx.send(f"{ctx.author} cleared {amount} messages in channel {ctx.channel}.", delete_after=5)
-            log.info(f"{ctx.author} cleared {amount} messages in channel {ctx.channel}.")  
+            deleted_messages = await ctx.channel.purge(limit=amount + 1)
+            deleted_count = len(deleted_messages) - 1
+            await ctx.send(f"{ctx.author} cleared {deleted_count} messages in channel {ctx.channel}.", delete_after=5)
+            log.info(f"{ctx.author} cleared {deleted_count} messages in channel {ctx.channel}. Wanted to delete {deleted_messages -1}")  
         except discord.Forbidden:
             await ctx.send("I don't have permission to delete messages.")
             log.warning(f"{ctx.author} tried to clear messages, but the bot lacked permissions.")
