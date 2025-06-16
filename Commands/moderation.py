@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from discord.ext import commands
 from Logger.logger import setup_logger
@@ -53,5 +54,26 @@ class Moderation(commands.Cog):
             await ctx.send("Clear failed. Please try again.")
             log.error(f"Clear Failed. Error {e}")
             
+    @commands.command(brief="Nuke all messages in a Channel")
+    @commands.has_permissions(manage_channels=True)
+    async def nuke(self,ctx):
+        def check(message):
+            return message.author == ctx.author and message.channel == ctx.channel and message.content.lower() in ["yes", "no"]
+        await ctx.send(f"{ctx.author.mention}, are you sure you want to nuke this channel? Reply with `yes` or `no`.")
+        
+        try:
+            confirmation = await self.bot.wait_for('message', timeout=30.0, check=check)
+        except asyncio.TimeoutError:
+            await ctx.send("⏰ Nuke command timed out. Cancelled.")
+            return
+        
+        if confirmation.content.lower() == "yes":
+            channel = ctx.channel
+            new_channel = await channel.clone()
+            await channel.delete()
+            await new_channel.send("💥 This channel was nuked!")
+        else:
+            await ctx.send("❌ Nuke command cancelled.")
+    
 async def setup(bot):
     await bot.add_cog(Moderation(bot))
