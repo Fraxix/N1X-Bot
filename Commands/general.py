@@ -3,6 +3,8 @@ from discord.ext import commands
 import requests
 from dotenv import load_dotenv
 import os
+import psutil
+import time
 
 load_dotenv(dotenv_path="Dev/.env")
 
@@ -17,11 +19,19 @@ class General(commands.Cog):
         
     @commands.command()
     async def status(self, ctx):
+        start_time = time.perf_counter()
         website_url = os.getenv('WEBSITE')
         webhook_url = os.getenv('DISCORD_WEBHOOK')
+        
+        cpu_usage = psutil.cpu_percent(interval=0.5)
+        memory = psutil.virtual_memory()
+        ram_usage = memory.percent
+        bot_latency = self.bot.latency * 1000
 
         website_status = check_online(website_url)
         webhook_status = check_online(webhook_url)
+        
+        elapsed = (time.perf_counter() - start_time) * 1000 
 
         embed = discord.Embed(
             title="🔎 Service Status",
@@ -29,6 +39,16 @@ class General(commands.Cog):
         )
         embed.add_field(name="🌐 Website", value="✅ Online" if website_status else "❌ Offline", inline=False)
         embed.add_field(name="📡 Webhook", value="✅ Online" if webhook_status else "❌ Offline", inline=False)
+        embed.add_field(
+            name="🤖 N1X Bot",
+            value=(
+                f"📶 Ping: `{bot_latency:.2f} ms`\n"
+                f"🧠 RAM: `{ram_usage:.1f}%`\n"
+                f"🖥️ CPU: `{cpu_usage:.1f}%`\n"
+                f"⚙️ Status Check Time: `{elapsed:.2f} ms`"
+            ),
+            inline=False
+        )
 
         await ctx.send(embed=embed)
 
