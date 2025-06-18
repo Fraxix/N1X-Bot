@@ -10,8 +10,13 @@ class Fun(commands.Cog):
     async def coinflip(self, ctx):
         result = random.choice(["Heads", "Tails"])
         await ctx.send(f"🪙 The coin landed on: **{result}**!")
-
-
+        
+    @commands.command()
+    async def say(self, ctx):
+        content = ctx.message.content
+        Message = content.replace(">say", "")
+        await ctx.send(Message)
+        
 async def setup(bot):
     await bot.add_cog(Fun(bot))
     
