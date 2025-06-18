@@ -13,9 +13,14 @@ class Fun(commands.Cog):
         
     @commands.command()
     async def say(self, ctx):
-        content = ctx.message.content
-        Message = content.replace(">say", "")
-        await ctx.send(Message)
+        message = ctx.message.content
+        command_text = ctx.prefix + ctx.invoked_with
+        args = message[len(command_text):].strip()
+
+        if not args:
+            await ctx.send("You didn't tell me what to say!")
+        else:
+            await ctx.send(args)
         
 async def setup(bot):
     await bot.add_cog(Fun(bot))
