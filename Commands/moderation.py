@@ -2,6 +2,7 @@ import asyncio
 import discord
 from discord.ext import commands
 from Logger.logger import setup_logger
+from Database.database_connection import get_db_connection
 
 log = setup_logger()
 
@@ -75,6 +76,26 @@ class Moderation(commands.Cog):
             await new_channel.send("💥 This channel was nuked!")
         else:
             await ctx.send("❌ Nuke command cancelled.")
-    
+
+    @commands.command(name="setprefix", brief="Set a custom prefix for this server")
+    @commands.has_guild_permissions(administrator=True)
+    async def setprefix(self, ctx, new_prefix: str):
+        try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                REPLACE INTO prefixes (guild_id, prefix, guild_name)
+                VALUES (%s, %s, %s)
+                """,
+                (ctx.guild.id, new_prefix, ctx.guild.name)
+            )
+            conn.commit()
+            cursor.close()
+            conn.close()
+            await ctx.send(f"Prefix updated to `{new_prefix}` for guild `{ctx.guild.name}`")
+        except Exception as e:
+            await ctx.send(f"An error occurred: {e}")
+
 async def setup(bot):
     await bot.add_cog(Moderation(bot))

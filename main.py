@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
+from Database.database_connection import get_prefix
 from Logger.logger import setup_logger
 
 load_dotenv(dotenv_path="Dev/.env")
@@ -10,7 +11,7 @@ log = setup_logger()
 
 intents = discord.Intents.all()
 intents.members = True
-bot = commands.Bot(command_prefix='>', intents=intents)
+bot = commands.Bot(command_prefix=get_prefix, intents=intents)
 
 @bot.event
 async def on_ready():
