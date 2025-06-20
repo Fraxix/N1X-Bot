@@ -51,6 +51,31 @@ class General(commands.Cog):
         )
 
         await ctx.send(embed=embed)
+        
+    @commands.command()
+    async def userinfo(self, ctx, member: discord.Member = None):
+        member = member or ctx.author
+
+        roles = [role.mention for role in member.roles[1:]]
+        roles_display = ", ".join(roles[:5]) + ("..." if len(roles) > 5 else "") or "No roles"
+
+        embed = discord.Embed(
+            title=f"User Info: {member}",
+            color=member.color,
+            timestamp=ctx.message.created_at
+        )
+
+        embed.set_thumbnail(url=member.avatar.url if member.avatar else member.default_avatar.url)
+        embed.add_field(name="ID", value=member.id, inline=True)
+        embed.add_field(name="Display Name", value=member.display_name, inline=True)
+        embed.add_field(name="Status", value=str(member.status).title(), inline=True)
+        embed.add_field(name="Created", value=member.created_at.strftime("%Y-%m-%d %H:%M:%S"), inline=False)
+        embed.add_field(name="Joined Server", value=member.joined_at.strftime("%Y-%m-%d %H:%M:%S"), inline=False)
+        embed.add_field(name=f"Roles ({len(member.roles)-1})", value=roles_display, inline=False)
+    
+        embed.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.avatar.url if ctx.author.avatar else None)
+
+        await ctx.send(embed=embed)
 
 def check_online(url):
     try:
