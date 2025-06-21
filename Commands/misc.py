@@ -66,8 +66,15 @@ class Misc(commands.Cog):
         embed.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.display_avatar.url)
 
         await ctx.send(embed=embed)
-
         
-        
+    @commands.command()
+    async def banner(self, ctx, member: discord.Member = None):
+        member = member or ctx.author
+        user = await ctx.bot.fetch_user(member.id)
+        if user.banner:
+            await ctx.send(user.banner.url)
+        else:
+            await ctx.send("❌ This user has no banner.")
+            
 async def setup(bot):
     await bot.add_cog(Misc(bot))
