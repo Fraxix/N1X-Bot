@@ -76,6 +76,36 @@ class General(commands.Cog):
         embed.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.avatar.url if ctx.author.avatar else None)
 
         await ctx.send(embed=embed)
+        
+    @commands.command()
+    async def serverinfo(self, ctx):
+        guild = ctx.guild
+
+        embed = discord.Embed(
+            title=f"Server Info - {guild.name}",
+            color=discord.Color.blue(),
+            timestamp=ctx.message.created_at
+        )
+
+        if guild.icon:
+            embed.set_thumbnail(url=guild.icon.url)
+            
+        if guild.banner:
+            embed.set_image(url=guild.banner.url)
+
+        embed.add_field(name="Server ID", value=guild.id, inline=True)
+        embed.add_field(name="Owner", value=guild.owner.mention, inline=True)
+        embed.add_field(name="Region", value=str(guild.preferred_locale).capitalize(), inline=True)
+        embed.add_field(name="Verification Level", value=str(guild.verification_level).capitalize(), inline=True)
+        embed.add_field(name="Boost Level", value=str(guild.premium_tier), inline=True)
+        embed.add_field(name="Boosts", value=guild.premium_subscription_count, inline=True)
+        embed.add_field(name="Members", value=guild.member_count, inline=True)
+        embed.add_field(name="Text Channels", value=len(guild.text_channels), inline=True)
+        embed.add_field(name="Voice Channels", value=len(guild.voice_channels), inline=True)
+        embed.add_field(name="Created On", value=guild.created_at.strftime('%Y-%m-%d %H:%M:%S'), inline=False)
+
+        await ctx.send(embed=embed)
+
 
 def check_online(url):
     try:
