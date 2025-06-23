@@ -21,6 +21,15 @@ class Fun(commands.Cog):
             await ctx.send("You didn't tell me what to say!")
         else:
             await ctx.send(args)
+
+    @commands.command(help="Reverses the given text.")
+    async def reverse(self, ctx, *, text: str = None):
+        if not text:
+            await ctx.send("Please provide some text to reverse.")
+            return
+
+        reversed_text = text[::-1]
+        await ctx.send(reversed_text)
         
 async def setup(bot):
     await bot.add_cog(Fun(bot))
