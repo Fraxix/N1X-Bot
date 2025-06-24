@@ -62,11 +62,13 @@ class Moderation(commands.Cog):
         def check(message):
             return message.author == ctx.author and message.channel == ctx.channel and message.content.lower() in ["yes", "no"]
         await ctx.send(f"{ctx.author.mention}, are you sure you want to nuke this channel? Reply with `yes` or `no`.")
+        log.info(f"{ctx.author} wants to nuke channel: {ctx.channel} in Server: {ctx.guild} ({ctx.guild.id}).")
         
         try:
             confirmation = await self.bot.wait_for('message', timeout=30.0, check=check)
         except asyncio.TimeoutError:
             await ctx.send("⏰ Nuke command timed out. Cancelled.")
+            log.info(f"{ctx.author}'s Nuke Command for channel: {ctx.channel} in Server: {ctx.guild} ({ctx.guild.id}) was Cancelled. Reason: Timeout.")
             return
         
         if confirmation.content.lower() == "yes":
@@ -74,8 +76,10 @@ class Moderation(commands.Cog):
             new_channel = await channel.clone()
             await channel.delete()
             await new_channel.send("💥 This channel was nuked!")
+            log.info(f"{ctx.author} nuked channel: {ctx.channel} in Server: {ctx.guild} ({ctx.guild.id})")
         else:
             await ctx.send("❌ Nuke command cancelled.")
+            log.info(f"{ctx.author}'s Nuke Command for channel: {ctx.channel} in Server: {ctx.guild} ({ctx.guild.id}) was Cancelled. Reason: User Cancelled.")
 
     @commands.command(name="setprefix", brief="Set a custom prefix for this server")
     @commands.has_guild_permissions(administrator=True)
@@ -94,8 +98,10 @@ class Moderation(commands.Cog):
             cursor.close()
             conn.close()
             await ctx.send(f"Prefix updated to `{new_prefix}` for guild `{ctx.guild.name}`")
+            log.info(f"{ctx.author} updated the prefix for guild {ctx.guild.name} ({ctx.guild.id}) to {new_prefix}.")
         except Exception as e:
             await ctx.send(f"An error occurred: {e}")
+            log.error(f"An error occureed: {e}")
 
 async def setup(bot):
     await bot.add_cog(Moderation(bot))
