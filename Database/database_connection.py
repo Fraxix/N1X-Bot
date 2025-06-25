@@ -22,7 +22,7 @@ def get_prefix(bot, message):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT prefix FROM prefixes WHERE guild_id = %s", (message.guild.id,))
+        cursor.execute("SELECT prefix FROM Settings WHERE guild_id = %s", (message.guild.id,))
         result = cursor.fetchone()
         cursor.close()
         conn.close()
