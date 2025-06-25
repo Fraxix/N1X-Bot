@@ -89,10 +89,11 @@ class Moderation(commands.Cog):
             cursor = conn.cursor()
             cursor.execute(
                 """
-                REPLACE INTO Settings (guild_id, prefix, guild_name)
-                VALUES (%s, %s, %s)
+                UPDATE guild_settings
+                SET prefix = %s, guild_name = %s, owner_id = %s
+                WHERE guild_id = %s
                 """,
-                (ctx.guild.id, new_prefix, ctx.guild.name)
+                (new_prefix, ctx.guild.name, ctx.guild.owner_id if ctx.guild.owner else None, ctx.guild.id)
             )
             conn.commit()
             cursor.close()
