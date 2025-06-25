@@ -14,37 +14,6 @@ intents.members = True
 bot = commands.Bot(command_prefix=get_prefix, intents=intents)
 
 @bot.event
-async def on_ready():
-    log.info(f'Logged in as {bot.user.name}')
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=" >help | N1X at your service"))
-
-@bot.event
-async def on_disconnect():
-    log.info("Bot disconnected.")
-
-@bot.event
-async def on_resumed():
-    log.info("Bot resumed a session.")
-
-@bot.event
-async def on_member_join(member):
-    channel = discord.utils.get(member.guild.text_channels, name="general")
-    if channel:
-        await channel.send(f"{member.mention} has joined the server!")
-        log.info(f"{member} has joined the server!")
-    else:
-        log.error("No general channel found!")
-
-@bot.event
-async def on_member_remove(member):
-    channel = discord.utils.get(member.guild.text_channels, name="general")
-    if channel:
-        await channel.send(f"{member.mention} has left the server!")
-        log.info(f"{member} has left the server!")
-    else:
-        log.error("No general channel found!")
-
-@bot.event
 async def setup_hook():
     for filename in os.listdir('./Commands'):
         if filename.endswith('.py'):
