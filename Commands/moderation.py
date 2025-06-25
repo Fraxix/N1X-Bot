@@ -89,7 +89,7 @@ class Moderation(commands.Cog):
             cursor = conn.cursor()
             cursor.execute(
                 """
-                REPLACE INTO prefixes (guild_id, prefix, guild_name)
+                REPLACE INTO Settings (guild_id, prefix, guild_name)
                 VALUES (%s, %s, %s)
                 """,
                 (ctx.guild.id, new_prefix, ctx.guild.name)

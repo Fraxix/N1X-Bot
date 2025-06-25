@@ -25,7 +25,25 @@ async def on_disconnect():
 @bot.event
 async def on_resumed():
     log.info("Bot resumed a session.")
-    
+
+@bot.event
+async def on_member_join(member):
+    channel = discord.utils.get(member.guild.text_channels, name="general")
+    if channel:
+        await channel.send(f"{member.mention} has joined the server!")
+        log.info(f"{member} has joined the server!")
+    else:
+        log.error("No general channel found!")
+
+@bot.event
+async def on_member_remove(member):
+    channel = discord.utils.get(member.guild.text_channels, name="general")
+    if channel:
+        await channel.send(f"{member.mention} has left the server!")
+        log.info(f"{member} has left the server!")
+    else:
+        log.error("No general channel found!")
+
 @bot.event
 async def setup_hook():
     for filename in os.listdir('./Commands'):
